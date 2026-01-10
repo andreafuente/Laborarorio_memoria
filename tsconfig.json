@@ -15,5 +15,8 @@
     "noImplicitReturns": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [
+    "Prueba*/src/**/*.ts",
+    "App-Final/src/**/*.ts"
+  ]
 }
