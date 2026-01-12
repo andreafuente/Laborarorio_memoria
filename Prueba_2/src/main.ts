@@ -24,7 +24,7 @@ const crearBoton = (): HTMLButtonElement | HTMLDivElement => {
 const nuevoBoton = crearBoton();
 
 //Comprobar si existe la imagen antes de pintarla
-const comprobarImagen = (boton: HTMLButtonElement): boolean => {
+export const comprobarImagen = (boton: HTMLButtonElement): boolean => {
   const imagenExistente = boton.querySelector("#imagen-tarjeta");
   if (imagenExistente !== null) {
     return true;
@@ -33,7 +33,7 @@ const comprobarImagen = (boton: HTMLButtonElement): boolean => {
 };
 
 //Limpiar imagen existente
-const limpiarImagenExistente = (boton: HTMLButtonElement): void => {
+export const limpiarImagenExistente = (boton: HTMLButtonElement): void => {
   const imagenExistente = boton.querySelector("#imagen-tarjeta");
   if (imagenExistente !== null) {
     imagenExistente.remove();
