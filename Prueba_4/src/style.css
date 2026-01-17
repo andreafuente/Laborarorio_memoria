@@ -110,8 +110,8 @@ button:focus-visible {
 
 #grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 12px;
   grid-row-gap: 12px;
   margin: 32px 64px;
@@ -124,4 +124,8 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
   background-color: #aee2ff;
+}
+
+.card-button:has(img) {
+background-color: #b799ff;
 }

@@ -66,8 +66,11 @@ const pintarTarjeta = (boton: HTMLButtonElement, estado: estadoTarjeta): void =>
       }
       boton.style.backgroundColor = "#aee2ff";
     }
-  
   };
+
+if (nuevoBoton instanceof HTMLButtonElement) {
+  pintarTarjeta(nuevoBoton,"DORSO");
+}
 
 const handleJugar = (): void => {
   if (nuevoBoton instanceof HTMLButtonElement) {
