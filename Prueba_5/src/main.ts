@@ -4,14 +4,14 @@ const crearBoton = (): HTMLButtonElement => {
   boton.type = "button";
   boton.className = "card-button";
   return boton;
-}
+};
 
 interface InfoCarta {
   idFoto: number;
   imagen: string;
 }
 
-const cartas : InfoCarta[] = [
+const cartas: InfoCarta[] = [
   {
     idFoto: 1,
     imagen:
@@ -32,7 +32,7 @@ const cartas : InfoCarta[] = [
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/4.png",
   },
-{
+  {
     idFoto: 5,
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/5.png",
@@ -42,7 +42,7 @@ const cartas : InfoCarta[] = [
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/6.png",
   },
- {
+  {
     idFoto: 1,
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/1.png",
@@ -62,7 +62,7 @@ const cartas : InfoCarta[] = [
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/4.png",
   },
-{
+  {
     idFoto: 5,
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/5.png",
@@ -71,17 +71,17 @@ const cartas : InfoCarta[] = [
     idFoto: 6,
     imagen:
       "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/refs/heads/main/memo/6.png",
-  }
+  },
 ];
 
 const pintarBotones = (cantidad: number): HTMLButtonElement[] => {
   const botones: HTMLButtonElement[] = [];
   for (let i = 0; i < cantidad; i++) {
-    const boton = crearBoton() ;
+    const boton = crearBoton();
     if (tarjetaContainer) {
       tarjetaContainer.appendChild(boton);
       boton.dataset.indice = i.toString();
-        botones.push(boton);
+      botones.push(boton);
     }
   }
   return botones;
@@ -94,15 +94,13 @@ botones.forEach((boton) =>
     pintarTarjeta(boton, cartas[indice]);
   })
 );
-  
-
 
 function crearImagen(imagen: InfoCarta): HTMLImageElement {
-    const imagenElement = document.createElement("img");
-    imagenElement.className = "card-image";
-    imagenElement.src = imagen.imagen;
-    imagenElement.dataset.idFoto = imagen.idFoto.toString();
-    return imagenElement;
+  const imagenElement = document.createElement("img");
+  imagenElement.className = "card-image";
+  imagenElement.src = imagen.imagen;
+  imagenElement.dataset.idFoto = imagen.idFoto.toString();
+  return imagenElement;
 }
 
 //Comprobar si existe la imagen antes de pintarla
@@ -130,14 +128,10 @@ const pintarImagen = (boton: HTMLButtonElement, imagen: InfoCarta): void => {
   }
 };
 
-
-
-const pintarTarjeta = (boton: HTMLButtonElement, imagen: InfoCarta) : void => {
-        if (!comprobarImagen(boton)) {
-      pintarImagen(boton,imagen);
-    } else  {
-        limpiarImagenExistente(boton);
-      }
+const pintarTarjeta = (boton: HTMLButtonElement, imagen: InfoCarta): void => {
+  if (!comprobarImagen(boton)) {
+    pintarImagen(boton, imagen);
+  } else {
+    limpiarImagenExistente(boton);
+  }
 };
-
-
