@@ -86,14 +86,6 @@ const pintarBotones = (cantidad: number): HTMLButtonElement[] => {
   }
   return botones;
 };
-const botones = pintarBotones(cartas.length);
-
-botones.forEach((boton) =>
-  boton.addEventListener("click", () => {
-    const indice = Number(boton.dataset.indice);
-    pintarTarjeta(boton, cartas[indice]);
-  })
-);
 
 function crearImagen(imagen: InfoCarta): HTMLImageElement {
   const imagenElement = document.createElement("img");
@@ -132,6 +124,22 @@ const pintarTarjeta = (boton: HTMLButtonElement, imagen: InfoCarta): void => {
   if (!comprobarImagen(boton)) {
     pintarImagen(boton, imagen);
   } else {
-    limpiarImagenExistente(boton);
+   
   }
 };
+
+const botones = pintarBotones(cartas.length);
+
+const handleCartaClick = (): void => {
+  botones.forEach((boton) =>
+    boton.addEventListener("click", () => {
+      const indiceString = boton.dataset.indice;
+            if (!indiceString) return;
+      const indice = Number(indiceString);
+      if (Number.isNaN(indice)) return;
+      pintarTarjeta(boton, cartas[indice]);
+    })
+  );
+};
+
+handleCartaClick();
