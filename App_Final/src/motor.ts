@@ -115,24 +115,31 @@ export const aplicarJugada = (
   tablero: Tablero,
   resultado: ResultadoJugada
 ): void => {
-  if (resultado === "NadaQueResolver") return; // No hay nada que resolver
+  if (resultado === "NadaQueResolver") {
+    return;
+  }; // No hay nada que resolver
 
   const indiceA = tablero.indiceCartaVolteadaA;
   const indiceB = tablero.indiceCartaVolteadaB;
   if (indiceA === undefined || indiceB === undefined) return;
+  tablero.intentos ++; // Incrementar el contador de intentos
 
   if (resultado === "ParejaEncontrada") {
-    parejaEncontrada(tablero, indiceA, indiceB); // Marcar las cartas como encontradas
+    parejaEncontrada(tablero, indiceA, indiceB) // Marcar las cartas como encontradas
   } else {
-    parejaNoEncontrada(tablero, indiceA, indiceB); // Voltear las cartas de nuevo
+    parejaNoEncontrada(tablero, indiceA, indiceB)// Voltear las cartas de nuevo
   }
 
   tablero.estadoPartida = esPartidaCompleta(tablero) // Verificar si la partida está completa
     ? "PartidaCompleta"
     : "CeroCartasLevantadas";
+
+  tablero.indiceCartaVolteadaA = undefined;// Resetear los índices de las cartas volteadas
+  tablero.indiceCartaVolteadaB = undefined;
 };
 
 export const iniciaPartida = (tablero: Tablero): void => {
+  tablero.intentos = 0;
   tablero.cartas.forEach((carta) => {
     carta.estaVuelta = false;
     carta.encontrada = false;

@@ -87,7 +87,7 @@ const pintarBotones = (cantidad: number): HTMLButtonElement[] => {
   return botones;
 };
 
-function crearImagen(imagen: InfoCarta): HTMLImageElement {
+const crearImagen = (imagen: InfoCarta): HTMLImageElement => {
   const imagenElement = document.createElement("img");
   imagenElement.className = "card-image";
   imagenElement.src = imagen.imagen;
@@ -96,8 +96,8 @@ function crearImagen(imagen: InfoCarta): HTMLImageElement {
 }
 
 //Comprobar si existe la imagen antes de pintarla
-export const comprobarImagen = (boton: HTMLButtonElement): boolean => {
-  const imagenExistente = boton.querySelector(".card-image");
+ const comprobarImagen = (boton: HTMLButtonElement): boolean => {
+  const imagenExistente = boton.querySelector<HTMLImageElement>(".card-image");
   if (imagenExistente !== null) {
     return true;
   }
@@ -105,8 +105,8 @@ export const comprobarImagen = (boton: HTMLButtonElement): boolean => {
 };
 
 //Limpiar imagen existente
-export const limpiarImagenExistente = (boton: HTMLButtonElement): void => {
-  const imagenExistente = boton.querySelector(".card-image");
+const limpiarImagenExistente = (boton: HTMLButtonElement): void => {
+  const imagenExistente = boton.querySelector<HTMLImageElement>(".card-image");
   if (imagenExistente !== null) {
     imagenExistente.remove();
   }
@@ -123,8 +123,6 @@ const pintarImagen = (boton: HTMLButtonElement, imagen: InfoCarta): void => {
 const pintarTarjeta = (boton: HTMLButtonElement, imagen: InfoCarta): void => {
   if (!comprobarImagen(boton)) {
     pintarImagen(boton, imagen);
-  } else {
-   
   }
 };
 

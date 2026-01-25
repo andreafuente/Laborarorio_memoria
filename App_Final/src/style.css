@@ -124,10 +124,18 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
   background-color: #aee2ff;
+  perspective: 600px;
 }
 
 .card-button:has(img) {
-background-color: #b799ff;
+  background-color: #b799ff;
+}
+
+.card-button:not(:disabled):hover {
+  transform: scale(1.15);
+}
+.card-button:disabled {
+  cursor: not-allowed;
 }
 
 #start-button {
@@ -139,5 +147,28 @@ background-color: #b799ff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-bottom: 32px;
+}
+
+.card-button.animar {
+  animation: clickFlip 0.8s ease forwards;
+}
+
+@keyframes clickFlip {
+  0% {
+    transform: scale(1) rotateY(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotateY(90deg);
+  }
+}
+
+#mensaje {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+#contador {
+  font-size: 1.2em;
+  margin: 0;
 }
