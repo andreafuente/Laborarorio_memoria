@@ -111,19 +111,6 @@ const pintarTablero = (): void => {
   });
 };
 
-const botonIniciar = document.getElementById("start-button");
-
-const handleIniciaPartida = (): void => {
-  if (!(botonIniciar instanceof HTMLButtonElement)) return;
-
-  botonIniciar.addEventListener("click", () => {
-    iniciaPartida(tablero);
-    actualizarContador(tablero.intentos);
-    pintarTablero();
-    pintarMensajeFinal();
-  });
-};
-
 const contadorIntentos = document.getElementById("contador");
 export const actualizarContador = (intentos: number): void => {
   if (contadorIntentos) {
@@ -181,7 +168,18 @@ const handleCartaClick = (): void => {
   });
 };
 
+const botonIniciar = document.getElementById("start-button");
 
+const handleIniciaPartida = (): void => {
+  if (!(botonIniciar instanceof HTMLButtonElement)) return;
+
+  botonIniciar.addEventListener("click", () => {
+    iniciaPartida(tablero);
+    actualizarContador(tablero.intentos);
+    pintarTablero();
+    pintarMensajeFinal();
+  });
+};
 
 let pantallaCargada = false;
 
